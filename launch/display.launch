@@ -1,10 +1,14 @@
 <launch>
-  <arg name="model" default="$(find ros_robot_model)/urdf/robot_name.urdf"/>
-  <arg name="gui" default="false"/>
+
+  <arg name="model" default="$(find ros_robot_model)/urdf/robot_model.urdf"/>
+  <arg name="gui" default="False"/>
+
   <param name="robot_description" textfile="$(arg model)"/>
   <param name="use_gui" value="$(arg gui)"/>
+
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
-  <node name="rviz" pkg="rviz" type="rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ros_robot_model)/rviz/urdf_tutorial.rviz" required="true"/>
+
 </launch>
