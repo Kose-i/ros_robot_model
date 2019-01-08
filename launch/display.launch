@@ -5,8 +5,15 @@
   <!--Open empty world-->
   <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
 
+  <arg name="gui" default="False"/>
+  <param name="use_gui" value="$(arg gui)"/>
+
   <!--catch parameterServer after TortoiseBot born-->
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model tortoisebot"/>
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model robot_model"/>
+
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"/>
+
+  <node pkg="robot_state_publisher" type="state_publisher" name="state_publisher"/>
 
   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find ros_robot_model)/rviz/urdf_tutorial.rviz" required="true"/>
 
