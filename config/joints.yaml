@@ -1,4 +1,0 @@
-type: "joint_state_controller/JointStaeController"
-joint:
-  -base_to_right_leg
-publish_rate: 50
