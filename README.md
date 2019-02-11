@@ -8,8 +8,6 @@ robot_modelをrosで動かす.
 
 urdf
 
-xacro
-
 ## Usage
 
 `roslaunch ros_robot_model display.launch`
